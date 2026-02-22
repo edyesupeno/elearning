@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Upload</title>
+</head>
+<body>
+    <h1>Test Upload Form</h1>
+    <form method="POST" action="/admin/settings" enctype="multipart/form-data">
+        <input type="hidden" name="_token" value="test">
+        <div>
+            <label>Nama Aplikasi:</label>
+            <input type="text" name="app_name" value="Test App" required>
+        </div>
+        <div>
+            <label>Logo:</label>
+            <input type="file" name="app_logo" accept="image/*">
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+    
+    <script>
+    document.querySelector('form').addEventListener('submit', function(e) {
+        console.log('Form submitting...');
+        const formData = new FormData(this);
+        for (let pair of formData.entries()) {
+            console.log(pair[0] + ': ' + pair[1]);
+        }
+    });
+    </script>
+</body>
+</html>
